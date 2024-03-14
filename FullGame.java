@@ -1,17 +1,20 @@
 public class FullGame {
-    private WordGuessingGame wordGame;
-    private InputReader reader = new InputReader();
+    private static WordGuessingGame wordGame;
+
+    private static InputReader reader = new InputReader();
 
 
-    
+    public static void main(String[] args) {
+        play();
+    }
 
 
-    public void play() {
+    public static void play() {
         char leave;
-        wordGame = new WordGuessingGame(reader);
+        wordGame = new WordGuessingGame();
         do {
             wordGame.play();
-            leave = reader.getChar("Quer continuar? (s/n)");
+            leave = reader.getChar("Quer continuar? (s/n) - ");
         }while(leave == 's');
     }
 }

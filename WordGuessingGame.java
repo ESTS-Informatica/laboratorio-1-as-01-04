@@ -2,15 +2,14 @@ public class WordGuessingGame {
     private String hiddenWord;
     private String guessWord;
     private int numberOfTries;
-    private InputReader reader;
-    private WordGenerator generator;
+    private InputReader reader = new InputReader();
+    private WordGenerator generator = new WordGenerator();
 
 
-    public WordGuessingGame(InputReader reader) {
+    public WordGuessingGame() {
         hiddenWord = generator.generateWord();
         initializaGuessedWord();
         numberOfTries = 0;
-        this.reader = reader;
     }
 
 
@@ -37,6 +36,7 @@ public class WordGuessingGame {
             showGuessedWord();
             guess();
         }while (!hiddenWord.equals(guessWord));
+        showGuessedWord();
         showResult();
         reset();
     }
@@ -47,10 +47,15 @@ public class WordGuessingGame {
 
     private void guess() {
         char letter = reader.getChar("Digite a letra: ");
+        String str = "";
         for(int i = 0; i < hiddenWord.length(); i++) {
-            if (letter == hiddenWord.charAt(i))
-                guessWord.replace(guessWord.charAt(i), letter);
+            if (letter == hiddenWord.charAt(i)) {
+                str += letter;
+            } else {
+                str += guessWord.charAt(i);
+            }
         }
+        setGuessWord(str);
         numberOfTries++;
     }
 

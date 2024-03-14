@@ -6,6 +6,11 @@ public class WordGenerator {
     private ArrayList<String> words = new ArrayList<String>();
 
 
+    public WordGenerator() {
+        fillArrayList();
+    }
+
+
     private void fillArrayList() {
         words.addAll(
                 List.of("boolean", "break", "byte", "case",
